@@ -11,7 +11,6 @@ app.get('/demo', (req, res) => {
     res.send('This is a Nodejs demo by the Beeroscope team.');
 })
 
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 })
