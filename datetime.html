@@ -5,11 +5,12 @@
    </head>
    <body>
       <h1>Datetime</h1>
-      <script src = "/node_modules/moment/min/moment.min.js"></script>
+      <script src = "node_modules/moment/min/moment.min.js"></script>
       <script>
            const m = moment();
-           console.log(m.format("MMM Do YY"));
-           console.log(m.format("[Yeah the day is] dddd [and we're in] YYYY"));
+           m.format("L");
+           document.write(m.format("L"));
+           console.log(m.format("L"));
       </script>
    </body>
 </html>
