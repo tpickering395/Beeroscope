@@ -2,12 +2,14 @@
 <html>
    <head>
       <title>Datetime</title>
-      <!-- data-main attribute tells require.js to load
-         scripts/main.js after require.js loads. -->
-      <script data-main="myapp/datetime.js" src="node_modules/requirejs/require.js"></script>
    </head>
    <body>
       <h1>Datetime</h1>
-      <div id="datedisplay" style="font-size:25px;"></div>
+      <script src = "/node_modules/moment/min/moment.min.js"></script>
+      <script>
+           const m = moment();
+           console.log(m.format("MMM Do YY"));
+           console.log(m.format("[Yeah the day is] dddd [and we're in] YYYY"));
+      </script>
    </body>
 </html>
