@@ -2,17 +2,16 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-const puppet = require('puppeteer');
+const _ = require("lodash");
 
-(async () => {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto('https://example.com');
-  await page.screenshot({ path: 'example.png' });
+const nums = _.range(1, 9);
+// => [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-  await browser.close();
-})();
+const chunks = _.chunk(nums, 3);
+// => [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
+const right = _.takeRight(nums, 2);
+// => [7, 8, 9]
 
 app.get('/', (req, res) => {
   res.send('Here we go!');
