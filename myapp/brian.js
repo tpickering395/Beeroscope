@@ -2,6 +2,17 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+const puppet = require('puppeteer');
+
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto('https://example.com');
+  await page.screenshot({ path: 'example.png' });
+
+  await browser.close();
+})();
+
 
 app.get('/', (req, res) => {
   res.send('Here we go!');
