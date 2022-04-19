@@ -8,7 +8,7 @@ function App() {
   const [word, setWord] = React.useState('IPA');
   const [associations,  setAssociations] = React.useState(null);
   const getAssociations = async () => {
-    const response = await fetch('/api/associations/' + word);  // Proxy API call to server back-end.
+    const response = await fetch(`/api/associations/` + word);  // Proxy API call to server back-end.
     const data = await response.json();                         // Response should already be in json but convert it just in case.
     await setAssociations(data);                                // assign the data to the associations variable.
     await console.log(`Length is: ${data.length}`);
