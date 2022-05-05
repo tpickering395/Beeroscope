@@ -10,7 +10,7 @@ async function getBeer() {
 			const tagline = str[2].split(":")[1].replace(/"/g,"");
 			const description = str[4].split(":\"")[1].replace(/"/g,"");
 			
-			document.getElementById("beer info").innerHTML = "🍺 Recommendation: " + name + "<br /><i>"
+			document.getElementById("beer info").innerHTML = "🍺 Recommendation from BrewDog: " + name + "<br /><i>"
 			+ tagline + "</i><br /><p>" + description + "</p>";
 		});
 	});
