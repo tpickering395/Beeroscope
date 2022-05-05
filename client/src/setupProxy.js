@@ -4,6 +4,7 @@ module.exports = function(app) {
     '/api',
     createProxyMiddleware({
       target: 'https://beeroscope-backend.herokuapp.com/',
+	  //target: 'http://localhost:3001',
       changeOrigin: true,
     })
   );

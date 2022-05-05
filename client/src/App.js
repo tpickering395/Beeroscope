@@ -1,38 +1,112 @@
-import logo from './logo.svg';
-import './App.css';
-import React from 'react';
-import ReactDOM from 'react-dom' 
-import TableComp from './Table';
+import React, { Component } from 'react';
 
-function App() {
-  const [word, setWord] = React.useState('IPA');
-  const [associations,  setAssociations] = React.useState(null);
-  const getAssociations = async () => {
-    const response = await fetch(`/api/associations/` + word);  // Proxy API call to server back-end.
-    const data = await response.json();                         // Response should already be in json but convert it just in case.
-    await setAssociations(data);                                // assign the data to the associations variable.
-    await console.log(`Length is: ${data.length}`);
-    await console.log(`-----SAMPLE ELEMENT-----\n${data[0]}`);  // Debug info, can be found in browser's console.
-  };
-    
-  // Rendered HTML
-  // Sets up a button that grabs whatever is in the search bar and calls the API caller with that data.
-  // Then, it creates a table using the returned data, or shows "No results" if nothing is returned.
-  // More info on how the table is set up can be found inside the Table Component. (Table.js)
-  return (
-    <div className="app">
-      <h1>Beer Search!</h1>
-      <input value={word} onChange={e => setWord(e.target.value)} />
-      <button onClick={getAssociations}>Search</button>
-      {associations && (
-        Object.keys(associations).length === 0
-          ? <p>No results</p>
-          : <div key={"table list"}>
-              <TableComp data={associations}/>
-            </div>
-      )}
-    </div>
-  );
+//get beer recommendation and update element
+async function getBeer() {
+	fetch('/api/beer/')
+	.then(function(response) {
+		return response.text().then(function(text) {
+			const str = text.split(",\"");
+			const name = str[1].split(":")[1].replace(/"/g,"");
+			const tagline = str[2].split(":")[1].replace(/"/g,"");
+			const description = str[4].split(":\"")[1].replace(/"/g,"");
+			
+			document.getElementById("beer info").innerHTML = "🍺 Recommendation: " + name + "<br /><i>"
+			+ tagline + "</i><br /><p>" + description + "</p>";
+		});
+	});
 }
 
-export default App;
+//get horoscope and update element
+function getHoro(sign) {
+	fetch('/api/horoscopes/' + sign)
+	.then(function(response) {
+		return response.text().then(function(text) {
+			const str = text.split(",\"");
+			const daterange = str[0].split(":")[1].replace(/"/g,"");
+			const currentdate = str[1].split(":")[1].replace(/"/g,"");
+			const description = str[2].split(":")[1].replace(/"/g,"");
+			
+			document.getElementById("horoscope").innerHTML = "<br /><p>" + sign + " (" + daterange + ") horoscope for " + currentdate
+			+ ":<br /><br />" + description + "</p><br />";
+		});
+	});
+}
+	
+function getBeeroscope(sign) {
+	getBeer();
+	getHoro(sign);
+}
+	
+class Beeroscope extends Component {
+	constructor(props){
+        super(props);
+    }
+	
+	componentDidMount() {
+
+	}
+	
+	componentDidUpdate() {
+
+	}
+
+    render() {
+        return (
+		<center>
+		<h1>Click your sign to get your daily Beeroscope!</h1>
+		<table id = "signs">
+		<tr>
+			<td><div class = "aries">
+				<button onClick={() => getBeeroscope("ARIES")}><img src="https://i.imgur.com/pa5dvx0.png" width="100" height="100"></img></button>
+			</div></td>
+			<td><div class = "taurus">
+				<button onClick={() => getBeeroscope("TAURUS")}><img src="https://i.imgur.com/WYv5Lry.png" width="100" height="100"></img></button>
+			</div></td>
+			<td><div class = "gemini">
+				<button onClick={() => getBeeroscope("GEMINI")}><img src="https://i.imgur.com/8Z59vyz.png" width="100" height="100"></img></button>
+			</div></td>
+			<td><div class = "cancer">
+				<button onClick={() => getBeeroscope("CANCER")}><img src="https://i.imgur.com/qcHIjt8.png" width="100" height="100"></img></button>
+			</div></td>
+		</tr>
+		
+		<tr>
+			<td><div class = "leo">
+				<button onClick={() => getBeeroscope("LEO")}><img src="https://i.imgur.com/kJ8UqgI.png" width="100" height="100"></img></button>
+			</div></td>
+			<td><div class = "virgo">
+				<button onClick={() => getBeeroscope("VIRGO")}><img src="https://i.imgur.com/JVxM4n2.png" width="100" height="100"></img></button>
+			</div></td>
+			<td><div class = "libra">
+				<button onClick={() => getBeeroscope("LIBRA")}><img src="https://i.imgur.com/m0iPdYX.png" width="100" height="100"></img></button>
+			</div></td>
+			<td><div class = "scorpio">
+				<button onClick={() => getBeeroscope("SCORPIO")}><img src="https://i.imgur.com/EMWFhol.png" width="100" height="100"></img></button>
+			</div></td>
+		</tr>
+		
+		<tr>
+			<td><div class = "sagittarius">
+				<button onClick={() => getBeeroscope("SAGITTARIUS")}><img src="https://i.imgur.com/dpfXFkU.png" width="100" height="100"></img></button>
+			</div></td>
+			<td><div class = "capricorn">
+				<button onClick={() => getBeeroscope("CAPRICORN")}><img src="https://i.imgur.com/sbmrFRE.png" width="100" height="100"></img></button>
+			</div></td>
+			<td><div class = "aquarius">
+				<button onClick={() => getBeeroscope("AQUARIUS")}><img src="https://i.imgur.com/EFICzQR.png" width="100" height="100"></img></button>
+			</div></td>
+			<td><div class = "pisces">
+				<button onClick={() => getBeeroscope("PISCES")}><img src="https://i.imgur.com/bGqurNc.png" width="100" height="100"></img></button>
+			</div></td>
+		</tr></table>
+		    <div id = "horoscope">
+			</div>
+			<div id = "beer info"><p>
+			</p></div>
+		
+		</center>
+        );
+    }
+}
+
+export default Beeroscope;
