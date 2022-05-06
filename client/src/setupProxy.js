@@ -3,8 +3,8 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'https://beeroscope-backend.herokuapp.com/',
-	  //target: 'http://localhost:3001',
+     // target: 'https://beeroscope-backend.herokuapp.com/',
+	    target: 'http://localhost:3001',
       changeOrigin: true,
     })
   );

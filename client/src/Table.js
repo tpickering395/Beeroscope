@@ -48,8 +48,8 @@ export default class Table extends React.Component {
     // Returns the Table in HTML form.
     render() {
         return (
-            <div>
-            <table>
+            <div class="table-wrapper">
+            <table class="fl-table">
             <thead>
             <tr>{this.getHeader()}</tr>
             </thead>
