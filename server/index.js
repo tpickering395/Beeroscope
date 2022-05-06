@@ -18,6 +18,7 @@ app.get('/api/associations/:word', (req, res) => {
   });
 });
 
+app.use(express.static(__dirname + '/static/public/uploads'));
 
 app.get('/api/beer/', (req, res) => {
   const request = unirest("GET", "https://api.punkapi.com/v2/beers/random");   // Load API endpoint.          
