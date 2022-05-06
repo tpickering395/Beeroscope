@@ -4,6 +4,8 @@ const port = process.env.PORT || 3001;
 const unirest = require("unirest");
 var request = require('request');
 
+app.use(express.static(__dirname + '/static/public/uploads'));
+
 app.get('/api/beer/', (req, res) => {
   const request = unirest("GET", "https://api.punkapi.com/v2/beers/random");   // Load API endpoint.          
 

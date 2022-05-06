@@ -57,46 +57,46 @@ class Beeroscope extends Component {
 		<table id = "signs">
 		<tr>
 			<td><div class = "aries">
-				<button onClick={() => getBeeroscope("ARIES")}><img src="https://i.imgur.com/pa5dvx0.png" width="100" height="100"></img></button>
+				<button onClick={() => getBeeroscope("ARIES")}><img src="https://beeroscope-backend.herokuapp.com/aries.png" width="100" height="100"></img></button>
 			</div></td>
 			<td><div class = "taurus">
-				<button onClick={() => getBeeroscope("TAURUS")}><img src="https://i.imgur.com/WYv5Lry.png" width="100" height="100"></img></button>
+				<button onClick={() => getBeeroscope("TAURUS")}><img src="https://beeroscope-backend.herokuapp.com/taurus.png" width="100" height="100"></img></button>
 			</div></td>
 			<td><div class = "gemini">
-				<button onClick={() => getBeeroscope("GEMINI")}><img src="https://i.imgur.com/8Z59vyz.png" width="100" height="100"></img></button>
+				<button onClick={() => getBeeroscope("GEMINI")}><img src="https://beeroscope-backend.herokuapp.com/gemini.png" width="100" height="100"></img></button>
 			</div></td>
 			<td><div class = "cancer">
-				<button onClick={() => getBeeroscope("CANCER")}><img src="https://i.imgur.com/qcHIjt8.png" width="100" height="100"></img></button>
+				<button onClick={() => getBeeroscope("CANCER")}><img src="https://beeroscope-backend.herokuapp.com/cancer.png" width="100" height="100"></img></button>
 			</div></td>
 		</tr>
 		
 		<tr>
 			<td><div class = "leo">
-				<button onClick={() => getBeeroscope("LEO")}><img src="https://i.imgur.com/kJ8UqgI.png" width="100" height="100"></img></button>
+				<button onClick={() => getBeeroscope("LEO")}><img src="https://beeroscope-backend.herokuapp.com/leo.png" width="100" height="100"></img></button>
 			</div></td>
 			<td><div class = "virgo">
-				<button onClick={() => getBeeroscope("VIRGO")}><img src="https://i.imgur.com/JVxM4n2.png" width="100" height="100"></img></button>
+				<button onClick={() => getBeeroscope("VIRGO")}><img src="https://beeroscope-backend.herokuapp.com/virgo.png" width="100" height="100"></img></button>
 			</div></td>
 			<td><div class = "libra">
-				<button onClick={() => getBeeroscope("LIBRA")}><img src="https://i.imgur.com/m0iPdYX.png" width="100" height="100"></img></button>
+				<button onClick={() => getBeeroscope("LIBRA")}><img src="https://beeroscope-backend.herokuapp.com/libra.png" width="100" height="100"></img></button>
 			</div></td>
 			<td><div class = "scorpio">
-				<button onClick={() => getBeeroscope("SCORPIO")}><img src="https://i.imgur.com/EMWFhol.png" width="100" height="100"></img></button>
+				<button onClick={() => getBeeroscope("SCORPIO")}><img src="https://beeroscope-backend.herokuapp.com/scorpio.png" width="100" height="100"></img></button>
 			</div></td>
 		</tr>
 		
 		<tr>
 			<td><div class = "sagittarius">
-				<button onClick={() => getBeeroscope("SAGITTARIUS")}><img src="https://i.imgur.com/dpfXFkU.png" width="100" height="100"></img></button>
+				<button onClick={() => getBeeroscope("SAGITTARIUS")}><img src="https://beeroscope-backend.herokuapp.com/sagittarius.png" width="100" height="100"></img></button>
 			</div></td>
 			<td><div class = "capricorn">
-				<button onClick={() => getBeeroscope("CAPRICORN")}><img src="https://i.imgur.com/sbmrFRE.png" width="100" height="100"></img></button>
+				<button onClick={() => getBeeroscope("CAPRICORN")}><img src="https://beeroscope-backend.herokuapp.com/capricorn.png" width="100" height="100"></img></button>
 			</div></td>
 			<td><div class = "aquarius">
-				<button onClick={() => getBeeroscope("AQUARIUS")}><img src="https://i.imgur.com/EFICzQR.png" width="100" height="100"></img></button>
+				<button onClick={() => getBeeroscope("AQUARIUS")}><img src="https://beeroscope-backend.herokuapp.com/aquarius.png" width="100" height="100"></img></button>
 			</div></td>
 			<td><div class = "pisces">
-				<button onClick={() => getBeeroscope("PISCES")}><img src="https://i.imgur.com/bGqurNc.png" width="100" height="100"></img></button>
+				<button onClick={() => getBeeroscope("PISCES")}><img src="https://beeroscope-backend.herokuapp.com/pisces.png" width="100" height="100"></img></button>
 			</div></td>
 		</tr></table>
 		    <div id = "horoscope">
