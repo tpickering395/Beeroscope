@@ -20,32 +20,41 @@ function Search() {
     // console.log(Object.keys(associations).length)
   };
     
+  document.title = 'Beer Search';
   // Rendered HTML
   // Sets up a button that grabs whatever is in the search bar and calls the API caller with that data.
   // Then, it creates a table using the returned data, or shows "No results" if nothing is returned.
   // More info on how the table is set up can be found inside the Table Component. (Table.js)
   return (
-    <head><title>Beer Search</title></head>,
-    <div className="HoroscopeLink">
-      <Link to="/">
-        <button variant="outlined">
-          Get your Beeroscope!
-        </button>
-      </Link>
-    </div>,
+    <div>
+      <div className="HoroscopeLink">
+        <nav
+          style={{
+            borderBottom: "solid 1px",
+            paddingBottom: "1rem",
+          }}
+        >
+        <Link to="/">
+          <button variant="outlined">
+            Get your Beeroscope!
+          </button>
+        </Link>
+        </nav>
+      </div>
     
-    <div className="search">
-      <h1>Beer Search!</h1>
-      <input value={word} onChange={e => setWord(e.target.value)} />
-      <button onClick={getAssociations}>Search</button>
-      {associations && (
-        Object.keys(associations).length === 0
-          ? <p>No results</p>
-          : <div key={"table list"}>
-              <TableComp data={associations}/>
-            </div>
-      )}
-    </div>
+      <div className="search">
+        <h1>Beer Search!</h1>
+        <input value={word} onChange={e => setWord(e.target.value)} />
+        <button onClick={getAssociations}>Search</button>
+        {associations && (
+          Object.keys(associations).length === 0
+            ? <p>No results</p>
+            : <div key={"table list"}>
+                <TableComp data={associations}/>
+              </div>
+        )}
+      </div>
+      </div>
   );
 }
 
