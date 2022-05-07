@@ -27,15 +27,15 @@ h1 {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: #f7f7f7;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #127;
+  background: #8bf;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #107;
+  background: #8bf;
 }

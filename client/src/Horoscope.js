@@ -52,6 +52,7 @@ class Beeroscope extends Component {
 
     render() {
         return (
+		<body style = {{color : "#8bf"}}>
 		<div>
 		<center>
 		<h1>Click your sign to get your daily Beeroscope!</h1>
@@ -113,6 +114,10 @@ class Beeroscope extends Component {
 				paddingTop: "1rem",
 			}}
 			>
+			<br />
+			<br />
+			<br />
+			<br />
 			<Link to="/search">
 				<button variant="outlined">
 					Search for Beer
@@ -121,6 +126,7 @@ class Beeroscope extends Component {
 			</nav>
 		</div>
 	  </div>
+	  </body>
         );
     }
 }
