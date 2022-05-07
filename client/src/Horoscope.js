@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from "react-router-dom";
 //get beer recommendation and update element
 async function getBeer() {
 	fetch('/api/beer/')
@@ -52,6 +52,7 @@ class Beeroscope extends Component {
 
     render() {
         return (
+		<div>
 		<center>
 		<h1>Click your sign to get your daily Beeroscope!</h1>
 		<table id = "signs">
@@ -105,6 +106,21 @@ class Beeroscope extends Component {
 			</p></div>
 		
 		</center>
+			<div className="SearchLink" align="center" >
+			<nav
+			style={{
+				paddingBottom: "1rem",
+				paddingTop: "1rem",
+			}}
+			>
+			<Link to="/search">
+				<button variant="outlined">
+					Search for Beer
+				</button>
+			</Link>
+			</nav>
+		</div>
+	  </div>
         );
     }
 }

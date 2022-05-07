@@ -17,9 +17,26 @@ export default class Table extends React.Component {
     // 0: id, 1: beer name, 2: Beer's tagline
     // An improvement would be to make this dynamic and dependent on user choice, there are about 30 other variables to choose from in the Punk API.
     getKeys = function(){
-        console.log(this.props.data)
+        var temp = Object.keys(this.props.data[0]);
         console.log(this.props.data[0])
-        return Object.keys(this.props.data[0]).slice(0, 3);
+        var keys = Object.keys(this.props.data[0]).slice(0, 3);
+        console.log(`Truth test: ${this.props.tags[0]} `);
+        if(this.props.tags[0]) {
+            keys.push(temp[6])
+        }
+        if(this.props.tags[1]) {
+            keys.push(temp[7])
+        }
+        if(this.props.tags[2]) {
+            keys.push(temp[5])
+        }
+        if(this.props.tags[3]) {
+            keys.push(temp[13])
+        }
+        if(this.props.tags[4]) {
+            keys.push(temp[3])
+        }
+        return keys;
     }
     
     // Get table headers using keys from the key-value pairs.
@@ -27,9 +44,10 @@ export default class Table extends React.Component {
         var keys = this.getKeys();
         console.log("~~~~~KEY LOGGING~~~~~~")
         return keys.map((key, index)=>{
-            
-            console.log(key);
-            return <th key={key}>{key.toUpperCase()}</th>
+            var headtitle = key;
+            headtitle = headtitle.replace(/_+/g, ' ');
+            console.log(headtitle);
+            return <th key={key}>{headtitle.toUpperCase()}</th>
         })
     }
     
@@ -48,8 +66,8 @@ export default class Table extends React.Component {
     // Returns the Table in HTML form.
     render() {
         return (
-            <div class="table-wrapper">
-            <table class="fl-table">
+            <div className="table-wrapper">
+            <table className="fl-table">
             <thead>
             <tr>{this.getHeader()}</tr>
             </thead>
@@ -68,6 +86,10 @@ export default class Table extends React.Component {
     return props.keys.map((key, index)=>{
         console.log(props.data[key])
         console.log(key)
+        if(key === "image_url") {
+            
+            return <td key={props.data[key] + 25}><img src={props.data[key]} className="photo"/></td>
+        }
         return <td key={props.data[key] + 25}><ul>{props.data[key]}</ul></td>
     })
    }

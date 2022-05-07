@@ -17,6 +17,11 @@ h2{
     padding: 30px 0;
 }
 
+.photo {
+    height: 110px;
+    width: 27px;
+}
+
 /* Table Styles */
 
 .table-wrapper{
