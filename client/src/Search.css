@@ -1,4 +1,18 @@
+.search .tag-search h2{
+  color : #45f5f5;
+  text-align: left;
+}
+
+.search .tag-search .adv-search-ul {
+  list-style: none;
+}
+
+.search .tag-search {
+  text-align: left;
+  color : #45f5f5;
+}
 body { background: #f7f7f7; }
+
 .app { margin: 3em; width: 24em; }
 input,
 button {

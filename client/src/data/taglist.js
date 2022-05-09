@@ -14,5 +14,8 @@ export const taglist = [
     {
         name: "First Brewed Date"
     },
+    {
+        name: "European Brewery Convention Units (EBC/Color)"
+    }
 
 ]

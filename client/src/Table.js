@@ -42,6 +42,9 @@ export default class Table extends React.Component {
         if(this.props.tags[4]) {
             keys.push(temp[3])
         }
+        if(this.props.tags[5]){
+            keys.push(temp[10])
+        }
         return keys;
     }
     
@@ -225,11 +228,14 @@ export default class Table extends React.Component {
      //   console.log(key)
         if(key === "image_url") {
             
-            return <td key={props.data[key] + 25}><img src={props.data[key]} className="photo"/></td>
+            return <td key={props.data[key] + 25 + index}><img src={props.data[key]} className="photo"/></td>
         }
         else if(key === "name") {
-            return <td key={props.data[key] + 25}><ul>{props.data[key]}</ul></td>
+            return <td key={props.data[key] + 25 + index}><ul>{props.data[key]}</ul></td>
         }
-        return <td key={props.data[key] + 25}><ul>{props.data[key]}</ul></td>
+        else if(key == "ebc") {
+            return <td key={props.data[key] + 30 + index}><ul>{(!props.data[key] ? "N/A" : props.data[key])}</ul></td>
+        }
+        return <td key={props.data[key] + 25 + index}><ul>{props.data[key]}</ul></td>
     })
    }
