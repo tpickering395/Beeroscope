@@ -7,22 +7,24 @@ import { Link } from "react-router-dom"
 import { taglist } from "./data/taglist"
 import { searchlist } from "./data/searchlist"
 
+var abv_value = ""
+var ebc_value = ""
+var ibu_value = ""
+var pageNumber = "1"
+var currentPage = "Current Page: " + (typeof pageNumber === "undefined" ? "" : pageNumber);
+var abv_lt = "100"
+var abvgt = "0"
+var ibugt = "0"
+var ibult = "10000"
+var ebcgt = "0"
+var ebclt = "10000" 
+
 function Search() {
   const [checkedState, setCheckedState] = useState(
     new Array(taglist.length).fill(false)
   );
   console.log(`tag print: ${taglist}`);
-  var abv_value = ""
-  var ebc_value = ""
-  var ibu_value = ""
 
-
-  var abv_lt = "100"
-  var abvgt = "0"
-  var ibugt = "0"
-  var ibult = "10000"
-  var ebcgt = "0"
-  var ebclt = "10000" 
   const handleTick = (pos) => {
     const newState = checkedState.map((item, index) => index === pos ? !item : item);
     setCheckedState(newState);
@@ -98,11 +100,42 @@ function Search() {
     }
   }
 
+  const resetFilters = () => {
+    abv_value = ""
+    ebc_value = ""
+    ibu_value = ""
+    currentPage = "Current Page: " + pageNumber;
+    pageNumber = "1"
+    abv_lt = "100"
+    abvgt = "0"
+    ibugt = "0"
+    ibult = "10000"
+    ebcgt = "0"
+    ebclt = "10000" 
+  }
 
-  const [word, setWord] = React.useState('IPA');
+  const incrementPageNum = () => {
+    pageNumber++;
+    currentPage = "Current Page: " + pageNumber;
+    console.log("Pg num: " + pageNumber);
+    getAssociations();
+  };
+
+  const decreasePageNum = () => {
+    pageNumber--;
+    if(pageNumber < 1) {
+      pageNumber = 1;
+    }
+    currentPage = "Current Page: " + pageNumber;
+    console.log("Pg num: " + pageNumber);
+    getAssociations();
+    
+  };
+
+  const [word, setWord] = React.useState("");
   const [associations,  setAssociations] = React.useState(null);
   const getAssociations = async () => {
-    const response = await fetch('/api/associations/' + word + "/" + abv_lt + "/"  + abvgt + "/" + ibugt + "/" + ibult + "/" + ebclt + "/" + ebcgt);  // Proxy API call to server back-end.
+    const response = await fetch('/api/associations/' + word + "/" + abv_lt + "/"  + abvgt + "/" + ibugt + "/" + ibult + "/" + ebclt + "/" + ebcgt + "/" + pageNumber);  // Proxy API call to server back-end.
     const data = await response.json();                         // Response should already be in json but convert it just in case.
     await setAssociations(data);                                // assign the data to the associations variable.
     await console.log(`Length is: ${data.length}`);
@@ -162,6 +195,7 @@ function Search() {
         </ul>
         <div className="tag-search">
           <h2>Tags: (Advanced Search)</h2> 
+          <p>How to: Enter values by using <q>&lt;</q> or <q>&gt;</q> and then a value. Do not include quotation marks. <br/>Example: <br/> &lt; 6 in the ABV field will filter for ABV values of less than 6. <br/> &gt; 50 in the IBU field will filter for IBU values of greater than 50. <br/> &lt; 35 in the EBC field will filter for EBC values less than 35. <br/>Refreshing the page will reset the values to default.<br/></p>
           <ul className="adv-search-ul">
           {searchlist.map(({name}, index) => {
             return(
@@ -179,7 +213,8 @@ function Search() {
             )
           })}
           </ul>
-        </div>  
+        </div> 
+        <button onClick={resetFilters}>Reset Filters</button>
         <br></br>
         <center>
         <input value={word} onChange={e => setWord(e.target.value)} />
@@ -192,6 +227,8 @@ function Search() {
                 <TableComp data={associations}  tags={checkedState}/>
               </div>
         )}
+        <button onClick={decreasePageNum}>Last Page</button><button onClick={incrementPageNum}>Next Page</button><p>{currentPage}</p>
+        
       </div>
     </div>
   );
