@@ -201,7 +201,7 @@ export default class Table extends React.Component {
                 </div>
                 <center>
                 <div id='Detail-section' style={{color : "#45f5f5"}} className="detailed">
-                        <h1 id='title_header' hidden={true}><p style={{color : "#FFFF00"}}>🍺 Beer Report 🍺</p></h1>
+                        <h1 id='title_header' hidden={true}><p style={{color : "#FFFF00"}}>🍺 Highlighted Beer Report 🍺</p></h1>
                         <h2 id='beer_name' style={{color : "#FFFF00"}}></h2>
                         <div id='beer_image'></div>
                         <p id="description"></p>
