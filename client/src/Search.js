@@ -114,11 +114,17 @@ function Search() {
     ebclt = "10000" 
   }
 
-  const incrementPageNum = () => {
+  const incrementPageNum = async () => {
     pageNumber++;
+    getAssociations();
+    
+    if(associations.length < 25) {
+      pageNumber--;
+      getAssociations();
+    }
     currentPage = "Current Page: " + pageNumber;
     console.log("Pg num: " + pageNumber);
-    getAssociations();
+    
   };
 
   const decreasePageNum = () => {
