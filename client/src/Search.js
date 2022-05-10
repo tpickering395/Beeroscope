@@ -176,15 +176,13 @@ function Search() {
         </nav>
       </div>
 
-     <div className="types">
+      <div className="search">
+        
         <h1><p style={{ color: "#FFFF00" }}>🍺 The Two Types of Beer 🍺</p></h1>
         <h3><p style={{ color: "#45f5f5" }}>Ale</p></h3>
         <p>Ales are the older style of beer. Ales are known for their fruity flavor profile and sweeter taste. They look darker, have a cloudier appearance, have higher alcohol content, can be bitter and leaves a strong hop flavor</p>
         <h3><p style={{ color: "#45f5f5" }}>Lager</p></h3>
         <p>Lagers are the younger style of beer. They are known for their clean and crisp taste, are lighter and more mild tasting. Lighter and clearer in appearnce with lower alcohol content. </p>
-      </div>
-      
-      <div className="search">
         
         <h1><p style={{color : "#FFFF00"}}>🍺 Beer Search 🍺</p></h1>
         <h3><p style={{color : "#45f5f5"}}>Display Properties in Table:</p></h3>
